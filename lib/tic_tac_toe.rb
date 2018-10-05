@@ -1,6 +1,6 @@
-require './game.rb'
-require './board.rb'
-require './player.rb'
+require_relative 'game'
+require_relative 'board'
+require_relative 'player'
 
 class TicTacToeGame
   attr_accessor :name1, :name2
@@ -27,10 +27,8 @@ class TicTacToeGame
   end
 
   def game_start
-    board = Board.new
-    player1 = Player.new(@name1)
-    player2 = Player.new(@name2)
-    Game.new(player1, player2, board)
+    game = Game.new(@name1, @name2)
+    game.play
   end
 
   def play_again

@@ -1,18 +1,17 @@
-require './board.rb'
-require './player.rb'
+require_relative 'board'
+require_relative 'player'
   class Game
-    attr_accessor :player1, :player2, :board
+    attr_accessor :player1, :player2, :board, :current_player
 
     @@winning_cells = %w[123 456 789 147 258 369 159 357]
 
-    def initialize(player1, player2, board)
-      @player1 = player1
-      @player2 = player2
+    def initialize(player1, player2, board = Board.new)
+      @player1 = Player.new(player1)
+      @player2 = Player.new(player2)
       @board = board
       @current_turn = 1
       @current_player = nil
       @winner = nil
-      play
     end
 
     def play
